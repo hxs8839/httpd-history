@@ -42,16 +42,16 @@ public class RebuildHistory {
 	}
 
 	public void run() throws Exception {
-		// downloadGoogleDocs(props);
+		downloadGoogleDocs(props);
 		rebuildSchema(dbUtil);
-		loadSVNXML(dbUtil, props);
+		// loadGitLog(dbUtil,props);
 		// filterSVNLog(dbUtil, props);
-		loadFileListing(dbUtil, props);
-		loadVulnerabilitiesToSVN(dbUtil, props);
+		// loadFileListing(dbUtil, props);
+		// loadVulnerabilitiesToSVN(dbUtil, props);
 		// loadGroundedTheoryResults(dbUtil, props);
-		loadCVEs(dbUtil, props);
-		optimizeTables(dbUtil);
-		loadSLOC(dbUtil, props);
+		// loadCVEs(dbUtil, props);
+		// optimizeTables(dbUtil);
+		// loadSLOC(dbUtil, props);
 		// buildAnalysis(dbUtil, props);
 		log.info("Done.");
 	}
@@ -79,6 +79,8 @@ public class RebuildHistory {
 				new File(datadir, props.getProperty("history.cve2svn.local")));
 		export.add(props.getProperty("history.groundedtheory.googledoc"),
 				new File(datadir, props.getProperty("history.groundedtheory.local")));
+		export.add(props.getProperty("history.cveintro.googledoc"),
+				new File(datadir, props.getProperty("history.cveintro.local")));
 		export.downloadCSVs(props.getProperty("google.username"), props.getProperty("google.password"));
 	}
 
